@@ -3,7 +3,15 @@ import os
 import sys
 import urllib
 
-USAGE = ''' getsite.py <input_file> <home_url>'''
+USAGE = '''Usage: getsite.py <INPUT_FILE> <HOME_URL>
+
+    For each URL form INPUT_FILE that starts with HOME_URL getsite.py gets
+    data from URL and saves it to appropriate file and directory.
+
+    INPUT_FILE ... file with URL (one for each line) 
+                   you can get URLs by copy-pasting Safari's Activity window
+    HOME_URL   ... e.g.: http://site.com/dir/
+'''
 
 def main():
     if len(sys.argv) == 3:
@@ -11,7 +19,7 @@ def main():
         
         f = open(input_file)
         for url in f:
-            url = url[:-1]
+            url = url[:-1] # remove \n
             if url.startswith(home_url):
                 if url.endswith('/'):
                     filename = 'index.html'
